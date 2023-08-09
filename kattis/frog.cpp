@@ -15,29 +15,18 @@ struct car{
 	
 };
 
-
 void solve(){
 	int l, w; cin >> l >> w;
-	//vector<vector<char>> grid(l, vector<char>(w
 	vector<vector<car>> voit(l);
 	for(int v = 0; v < l; v++){
 		int o, i, s; cin >> o >> i >> s;
-		//~ cerr << "hmmm" << endl;
 		bool lr = !(v%2);
 	
 		for(int j = o; j < w; j += i){
 			voit[l-1-v].push_back({make_pair(j,l-1-v), s, i, lr});
 		}
-		
-		//get the direction
-		//~ cerr << "ici" << endl;
 	}
 	
-	//~ for(auto& i : voit){
-		//~ for(auto& j : i){
-			//~ cout << j.pos.first << " " << j.pos.second << " " << j.speed << " " << j.dir << endl;
-		//~ }
-	//~ }
 	int p; cin >> p; 
 	string s; cin >> s;
 	pair<int, int> pos = make_pair(p, -1);
@@ -52,7 +41,6 @@ void solve(){
 		}else if(s[i] == 'R'){
 			pos.first++;
 		}
-		
 			
 		int level = pos.second; //get the current level :)
 			
@@ -65,39 +53,25 @@ void solve(){
 			int ts = i+1;
 			int dir = (v.dir == 1) ? 1 : -1;
 			bool orig = (((i+1)%v.interval) == 0);
-			//~ cerr << "orig " << orig << endl;
-			//~ cerr << v.pos.first << " " << v.pos.second << endl;
-			//~ cerr << "dir is : " << dir << " " << v.dir << endl;
 			pair<int , int> newpos;
 						
 			bool is_squished = false;
 			if(orig){
-				//~ cerr << "cycles" << endl;
-				
 				newpos = make_pair(v.pos.first + ((-1)*dir*(ts*v.speed)), v.pos.second);
 				if(newpos.first < pos.first && pos.first <= v.pos.first) is_squished = true;
-				
-				//check if current layout is in interval when moving in opposite direction
-				
-			}else{ //check juste for + inteval
-				//~ cerr << "update pos" << endl;
+
+			}else{ 
 				newpos = make_pair(v.pos.first + (dir* (ts*v.speed)), v.pos.second);
 				
 				if(v.pos.first < pos.first && pos.first <= newpos.first) is_squished = true; 
 			}
-			//check if a car colide
-			//simply if it is 
-			//~ //pair<int, int> 
 						
 			if(pos == newpos){
-				//~ cerr << pos.first << " " << pos.second << " " << newpos.first << " " << newpos.second <<  endl;
 				cout << "squish\n";
-				//~ cerr << "timetep is : " << i << endl;
 				return;
 			}
 		}		
 	}
-	//~ cerr << pos.second << endl;
 	if(pos.second < l){
 		cout << "squish\n";
 		return;
@@ -108,8 +82,7 @@ void solve(){
 signed main() {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
-  //~ int t; cin >> t;
-  //~ while(t--) solve();
+  
   solve();
 
  
