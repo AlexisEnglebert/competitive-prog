@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#pragma GCC optimize ("O2")
  
 #define int long long
 #define double long double
@@ -46,7 +47,8 @@ int khun(vector<vector<int>>& adj){
 
 
 void solve(){
-	int n; cin >> n;
+	int n;
+	scanf("%ld", &n);
 	vector<trajet> all;
 	char dumb;
 	
@@ -55,11 +57,12 @@ void solve(){
 	};
 	
 	for(int i = 0; i < n; i++){
-		int h, m; cin >> h >> dumb >> m;
+		int h, m;
 		pair<int, int> start; 
 		pair<int, int> end; 
 		
-		cin >> start.first >> start.second >> end.first >> end.second;
+		scanf("%ld %c %ld %ld %ld %ld %ld", &h, &dumb, &m, &start.first, &start.second, &end.first, &end.second);
+
 		
 		int start_time = (h*60) + m;
 		int d = dist(start, end);
@@ -89,7 +92,8 @@ void solve(){
 signed main() {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
-  int t; cin >> t;
+  int t;
+  scanf("%ld", &t);
   while(t--) solve();
  
   return 0;
